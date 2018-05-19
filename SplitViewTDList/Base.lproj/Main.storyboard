@@ -24,11 +24,11 @@
                                     <constraint firstAttribute="height" constant="128" id="P0Q-sO-dJd"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-kC-fHa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-kC-fHa" userLabel="Detail Table View">
                                 <rect key="frame" x="0.0" y="292" width="375" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toDoItem" id="tfW-mq-Egi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailCell" id="tfW-mq-Egi">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tfW-mq-Egi" id="NFT-0H-cWw">
@@ -75,8 +75,8 @@
                     <navigationItem key="navigationItem" id="I8X-ud-B8F"/>
                     <connections>
                         <outlet property="bannerView" destination="DIx-3A-fi6" id="fbw-ta-2rC"/>
+                        <outlet property="detailTableView" destination="ahf-kC-fHa" id="ttM-cI-kk2"/>
                         <outlet property="inputToDo" destination="sf1-HC-fDr" id="586-4A-7NI"/>
-                        <outlet property="toDoTableView" destination="ahf-kC-fHa" id="vb1-2B-doS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhA-NQ-3kB" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,4 +16,10 @@ public struct DataStructs {
     static let masterTitle = "masterTitle"
     static let masterCell = "masterCell"
     static let masterCache = "Master Cache"
+    
+    //for detail list
+    static let detailEntity = "DetailList"
+    static let detailTitle = "detailTitle"
+    static let detailCell = "detailCell"
+    static let detailCache = "Detail Cache"
 }

@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class MasterViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+    
     var masterLists = [NSManagedObject]()
         /*ListType(title: "Home", banner: .home),         //array spot 0
         ListType(title: "Office", banner: .office),     //array spot 1

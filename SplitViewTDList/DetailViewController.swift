@@ -12,18 +12,25 @@ import CoreData
 class DetailViewController: UIViewController {
     
     var masterList: NSManagedObject!
-    var toDoItems = [String]()
+    var toDoItems = [NSManagedObject]()
     
+    var fetchedResultsController: NSFetchedResultsController<DetailList>?
     
+    @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var inputToDo: UITextField!
-    @IBOutlet weak var toDoTableView: UITableView!
     @IBOutlet weak var bannerView: UIImageView!
     
     @IBAction func addButtonWasTapped(_ sender: Any) {
-        if (inputToDo.text != "") {
-            toDoItems.append(inputToDo.text!)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: DataStructs.detailEntity, in: context)
+        let newDetail = NSManagedObject(entity: entity!, insertInto: context)
+        
+        if inputToDo.text != "" {
+            newDetail.setValue(inputToDo.text, forKey: DataStructs.detailTitle)
         }
-        toDoTableView.reloadData()
+        
+        appDelegate.saveContext()
         
         inputToDo.text = ""
     }
@@ -38,7 +45,22 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        toDoTableView.reloadData()
+        super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<DetailList>(entityName: DataStructs.detailEntity)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: DataStructs.detailTitle, ascending: true )]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: DataStructs.detailCache)
+        fetchedResultsController?.delegate = self
+        
+        do {
+            try fetchedResultsController?.performFetch()
+        } catch {
+            fatalError("Unable to fetch: \(error)")
+        }
     }
     
     override func viewDidLoad() {
@@ -59,9 +81,9 @@ class DetailViewController: UIViewController {
         super.setEditing(editing, animated: animated)
         
         if editing {
-            toDoTableView.setEditing(true, animated: true)
+            detailTableView.setEditing(true, animated: true)
         } else {
-            toDoTableView.setEditing(false, animated: true)
+            detailTableView.setEditing(false, animated: true)
         }
     }
 }
@@ -94,20 +116,34 @@ extension DetailViewController: UITableViewDelegate {
 
 extension DetailViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDoItems.count
+        guard let sectionInfo = fetchedResultsController?.sections?[section] else {
+            fatalError("Failed to load fetched results controller")
+        }
+        
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoItem", for: indexPath)
-        cell.textLabel?.text = toDoItems[indexPath.row]
-        return cell
+        guard let fetchedResultsController = fetchedResultsController else {
+            fatalError("Failed to load fetched results controller")
+        }
+        let detailCell = tableView.dequeueReusableCell(withIdentifier: DataStructs.detailCell, for: indexPath)
+        let detailList = fetchedResultsController.object(at: indexPath)
+        detailCell.textLabel?.text = detailList.detailTitle
+        return detailCell
     }
     
+    //Still need to update editing functions for CoreData
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             self.toDoItems.remove(at: indexPath.row)
-            toDoTableView.reloadData()
+            detailTableView.reloadData()
         }
     }
     
@@ -126,7 +162,47 @@ extension DetailViewController: UITableViewDataSource {
             toDoItems.insert(itemToMove, at: destinationIndexPath.row)
         }
     }
+}
+
+extension DetailViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+       detailTableView.beginUpdates()
+    }
     
+    func controller(_ control: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            guard let newIndexPath = newIndexPath else {
+                fatalError("New index path is nil")
+            }
+            
+            detailTableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .delete:
+            guard let indexPath = indexPath else {
+                fatalError("Index path is nil")
+            }
+            
+            detailTableView.deleteRows(at: [indexPath], with: .automatic)
+        case .move:
+            guard let newIndexPath = newIndexPath,
+                let indexPath = indexPath else {
+                    fatalError("Index path or new index path is nil?")
+            }
+            
+            detailTableView.deleteRows(at: [indexPath], with: .automatic)
+            detailTableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .update:
+            guard let indexPath = indexPath else {
+                fatalError("Index path is nil")
+            }
+            
+            detailTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        detailTableView.endUpdates()
+    }
 }
 
 

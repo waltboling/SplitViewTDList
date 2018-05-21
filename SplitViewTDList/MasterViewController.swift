@@ -70,6 +70,7 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
                 let masterList = fetchedResultsController?.object(at: indexPath)
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.masterList = masterList
+                controller.toDoItemsSet = (masterList?.withDetail)!
       /*
                 //leah added the switch below to pass the array list
                 switch list.listTitle

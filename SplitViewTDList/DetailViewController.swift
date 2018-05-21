@@ -12,7 +12,9 @@ import CoreData
 class DetailViewController: UIViewController {
     
     var masterList: NSManagedObject!
+    var toDoItemsSet: NSSet = []
     var toDoItems = [NSManagedObject]()
+    var toDoItemsArray = [String]()
     
     var fetchedResultsController: NSFetchedResultsController<DetailList>?
     
@@ -28,6 +30,7 @@ class DetailViewController: UIViewController {
         
         if inputToDo.text != "" {
             newDetail.setValue(inputToDo.text, forKey: DataStructs.detailTitle)
+            newDetail.setValue(masterList.value(forKey: DataStructs.masterTitle), forKey: DataStructs.parentTitle)
         }
         
         appDelegate.saveContext()
@@ -46,12 +49,14 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<DetailList>(entityName: DataStructs.detailEntity)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: DataStructs.detailTitle, ascending: true )]
+        
+        fetchRequest.predicate = NSPredicate(format: "\(DataStructs.parentTitle) == %@", masterList.value(forKey: DataStructs.masterTitle) as! CVarArg)
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: DataStructs.detailCache)
         fetchedResultsController?.delegate = self
@@ -70,8 +75,8 @@ class DetailViewController: UIViewController {
          //   bannerView.image = detailList.bannerImage
             
             navigationItem.rightBarButtonItem = editButtonItem
-
         }
+        
         
         //trying to get return key to function same as add button
         //inputToDo.delegate = self as? UITextFieldDelegate
@@ -91,13 +96,15 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        if indexPath.row >= toDoItems.count {
+        if indexPath.row >= (fetchedResultsController?.sections?[indexPath.section].numberOfObjects)! {
             return .insert
         } else {
             return .delete
         }
+        
     }
     
+    /*
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if isEditing && indexPath.row < toDoItems.count {
             return nil
@@ -111,7 +118,7 @@ extension DetailViewController: UITableViewDelegate {
             return IndexPath(row: toDoItems.count - 1, section: proposedDestinationIndexPath.section)
         }
         return proposedDestinationIndexPath
-    }
+    }*/
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -121,8 +128,7 @@ extension DetailViewController: UITableViewDataSource {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sectionInfo = fetchedResultsController?.sections?[section] else {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {        guard let sectionInfo = fetchedResultsController?.sections?[section] else {
             fatalError("Failed to load fetched results controller")
         }
         
@@ -136,17 +142,25 @@ extension DetailViewController: UITableViewDataSource {
         let detailCell = tableView.dequeueReusableCell(withIdentifier: DataStructs.detailCell, for: indexPath)
         let detailList = fetchedResultsController.object(at: indexPath)
         detailCell.textLabel?.text = detailList.detailTitle
+        
         return detailCell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
     }
     
     //Still need to update editing functions for CoreData
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+       let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if editingStyle == UITableViewCellEditingStyle.delete {
-            self.toDoItems.remove(at: indexPath.row)
-            detailTableView.reloadData()
+            let detailListItem = fetchedResultsController?.object(at: indexPath)
+            fetchedResultsController?.managedObjectContext.delete(detailListItem!)
+           
+            appDelegate.saveContext()
         }
     }
-    
+    /*
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if indexPath.row >= toDoItems.count && isEditing {
             return false
@@ -161,7 +175,7 @@ extension DetailViewController: UITableViewDataSource {
         if sourceIndexPath.section == destinationIndexPath.section {
             toDoItems.insert(itemToMove, at: destinationIndexPath.row)
         }
-    }
+    }*/
 }
 
 extension DetailViewController: NSFetchedResultsControllerDelegate {

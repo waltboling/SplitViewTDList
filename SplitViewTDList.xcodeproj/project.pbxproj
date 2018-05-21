@@ -19,10 +19,10 @@
 		E697239020AF40A500D38F41 /* SplitViewTDList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E697238E20AF40A500D38F41 /* SplitViewTDList.xcdatamodeld */; };
 		E6C6F21820AF8EF600A4D772 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C6F21720AF8EF600A4D772 /* Default-568h@2x.png */; };
 		E6C6F21A20AF933400A4D772 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C6F21920AF933400A4D772 /* DataStructs.swift */; };
-		E6C6F22220AFB6AA00A4D772 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6C6F22120AFB6AA00A4D772 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SplitViewTDList2.xcdatamodel; sourceTree = "<group>"; };
 		E646A51620ACB829008F1EC3 /* ToDoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItems.swift; sourceTree = "<group>"; };
 		E66CC08920882B940020CC9F /* SplitViewTDList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewTDList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66CC08C20882B940020CC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,7 +148,6 @@
 				E66CC09720882B940020CC9F /* LaunchScreen.storyboard in Resources */,
 				E6C6F21820AF8EF600A4D772 /* Default-568h@2x.png in Resources */,
 				E66CC09420882B940020CC9F /* Assets.xcassets in Resources */,
-				E6C6F22220AFB6AA00A4D772 /* Info.plist in Resources */,
 				E66CC09220882B940020CC9F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,9 +360,10 @@
 		E697238E20AF40A500D38F41 /* SplitViewTDList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */,
 				E697238F20AF40A500D38F41 /* Core Data Model.xcdatamodel */,
 			);
-			currentVersion = E697238F20AF40A500D38F41 /* Core Data Model.xcdatamodel */;
+			currentVersion = E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */;
 			path = SplitViewTDList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -7,23 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E646A51720ACB829008F1EC3 /* ToDoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E646A51620ACB829008F1EC3 /* ToDoItems.swift */; };
 		E66CC08D20882B940020CC9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66CC08C20882B940020CC9F /* AppDelegate.swift */; };
 		E66CC09220882B940020CC9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66CC09020882B940020CC9F /* Main.storyboard */; };
 		E66CC09420882B940020CC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66CC09320882B940020CC9F /* Assets.xcassets */; };
 		E66CC09720882B940020CC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66CC09520882B940020CC9F /* LaunchScreen.storyboard */; };
 		E66CC09F208830670020CC9F /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66CC09E208830670020CC9F /* MasterViewController.swift */; };
 		E66CC0A1208830C40020CC9F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66CC0A0208830C40020CC9F /* DetailViewController.swift */; };
-		E66CC0A320884AEB0020CC9F /* ListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66CC0A220884AEB0020CC9F /* ListType.swift */; };
 		E686EF7C20AFD3F600AE84C1 /* CreateMasterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E686EF7B20AFD3F600AE84C1 /* CreateMasterListVC.swift */; };
 		E697239020AF40A500D38F41 /* SplitViewTDList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E697238E20AF40A500D38F41 /* SplitViewTDList.xcdatamodeld */; };
-		E6C6F21820AF8EF600A4D772 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C6F21720AF8EF600A4D772 /* Default-568h@2x.png */; };
 		E6C6F21A20AF933400A4D772 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C6F21920AF933400A4D772 /* DataStructs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SplitViewTDList2.xcdatamodel; sourceTree = "<group>"; };
-		E646A51620ACB829008F1EC3 /* ToDoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItems.swift; sourceTree = "<group>"; };
 		E66CC08920882B940020CC9F /* SplitViewTDList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewTDList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66CC08C20882B940020CC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E66CC09120882B940020CC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -31,10 +27,8 @@
 		E66CC09620882B940020CC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E66CC09E208830670020CC9F /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		E66CC0A0208830C40020CC9F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		E66CC0A220884AEB0020CC9F /* ListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListType.swift; sourceTree = "<group>"; };
 		E686EF7B20AFD3F600AE84C1 /* CreateMasterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMasterListVC.swift; sourceTree = "<group>"; };
 		E697238F20AF40A500D38F41 /* Core Data Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Core Data Model.xcdatamodel"; sourceTree = "<group>"; };
-		E6C6F21720AF8EF600A4D772 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E6C6F21920AF933400A4D772 /* DataStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructs.swift; sourceTree = "<group>"; };
 		E6C6F22120AFB6AA00A4D772 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,7 +47,6 @@
 		E66CC08020882B940020CC9F = {
 			isa = PBXGroup;
 			children = (
-				E6C6F21720AF8EF600A4D772 /* Default-568h@2x.png */,
 				E66CC08B20882B940020CC9F /* SplitViewTDList */,
 				E66CC08A20882B940020CC9F /* Products */,
 			);
@@ -73,8 +66,6 @@
 				E66CC08C20882B940020CC9F /* AppDelegate.swift */,
 				E66CC09020882B940020CC9F /* Main.storyboard */,
 				E686EF7B20AFD3F600AE84C1 /* CreateMasterListVC.swift */,
-				E66CC0A220884AEB0020CC9F /* ListType.swift */,
-				E646A51620ACB829008F1EC3 /* ToDoItems.swift */,
 				E6C6F21920AF933400A4D772 /* DataStructs.swift */,
 				E66CC09E208830670020CC9F /* MasterViewController.swift */,
 				E66CC0A0208830C40020CC9F /* DetailViewController.swift */,
@@ -146,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E66CC09720882B940020CC9F /* LaunchScreen.storyboard in Resources */,
-				E6C6F21820AF8EF600A4D772 /* Default-568h@2x.png in Resources */,
 				E66CC09420882B940020CC9F /* Assets.xcassets in Resources */,
 				E66CC09220882B940020CC9F /* Main.storyboard in Resources */,
 			);
@@ -161,12 +151,10 @@
 			files = (
 				E686EF7C20AFD3F600AE84C1 /* CreateMasterListVC.swift in Sources */,
 				E66CC0A1208830C40020CC9F /* DetailViewController.swift in Sources */,
-				E646A51720ACB829008F1EC3 /* ToDoItems.swift in Sources */,
 				E697239020AF40A500D38F41 /* SplitViewTDList.xcdatamodeld in Sources */,
 				E66CC09F208830670020CC9F /* MasterViewController.swift in Sources */,
 				E66CC08D20882B940020CC9F /* AppDelegate.swift in Sources */,
 				E6C6F21A20AF933400A4D772 /* DataStructs.swift in Sources */,
-				E66CC0A320884AEB0020CC9F /* ListType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

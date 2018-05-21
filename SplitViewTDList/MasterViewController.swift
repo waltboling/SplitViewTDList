@@ -12,16 +12,6 @@ import CoreData
 class MasterViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     var masterLists = [NSManagedObject]()
-        /*ListType(title: "Home", banner: .home),         //array spot 0
-        ListType(title: "Office", banner: .office),     //array spot 1
-        ListType(title: "Family", banner: .family),     //array spot 2
-        ListType(title: "Personal", banner: .personal), //array spot 3
-        ListType(title: "Shopping", banner: .shopping)  //array spot 4
-    ]
- 
-    var fullToDoLists = [Array<String>()]
-    */
-
     var fetchedResultsController: NSFetchedResultsController<MasterList>?
         
     @IBAction func createListWasTapped(_ sender: UIBarButtonItem) {
@@ -55,13 +45,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //leah creating five empty spots for string arrays  to append
-       /* fullToDoLists.append(["test", "test2"])
-        fullToDoLists.append(Array<String>())
-        fullToDoLists.append(Array<String>())
-        fullToDoLists.append(Array<String>())
-        fullToDoLists.append(Array<String>())*/
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,29 +54,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.masterList = masterList
                 controller.toDoItemsSet = (masterList?.withDetail)!
-      /*
-                //leah added the switch below to pass the array list
-                switch list.listTitle
-                {
-                case "Home":
-                    controller.toDoItems = fullToDoLists[1]
-                    break
-                case "Office":
-                    controller.toDoItems = fullToDoLists[2]
-                    break
-                case "Family":
-                    controller.toDoItems = fullToDoLists[3]
-                    break
-                case "Personal":
-                    controller.toDoItems = fullToDoLists[4]
-                    break
-                case "Shopping":
-                    controller.toDoItems = fullToDoLists[5]
-                    break
-                default:
-                    break
-                }*/
-                //end leah
             }
         }
     }
@@ -141,44 +101,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         masterCell.textLabel?.text = masterList.masterTitle
             return masterCell
     }
-
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-
 }
 
 //NSFetchedResultsControllerDelegate Methods

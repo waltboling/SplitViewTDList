@@ -14,7 +14,6 @@ class DetailViewController: UIViewController {
     var masterList: NSManagedObject!
     var toDoItemsSet: NSSet = []
     var toDoItems = [NSManagedObject]()
-    var toDoItemsArray = [String]()
     
     var fetchedResultsController: NSFetchedResultsController<DetailList>?
     
@@ -56,7 +55,9 @@ class DetailViewController: UIViewController {
         let fetchRequest = NSFetchRequest<DetailList>(entityName: DataStructs.detailEntity)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: DataStructs.detailTitle, ascending: true )]
         
+        
         fetchRequest.predicate = NSPredicate(format: "\(DataStructs.parentTitle) == %@", masterList.value(forKey: DataStructs.masterTitle) as! CVarArg)
+            //correlating detail and master lists via "parentTitle" attribute
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: DataStructs.detailCache)
         fetchedResultsController?.delegate = self
@@ -72,14 +73,12 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         if let detailList = self.masterList {
             navigationItem.title = detailList.value(forKey: "masterTitle") as? String
-         //   bannerView.image = detailList.bannerImage
+            //  need to redo image features of app: old version -> bannerView.image = detailList.bannerImage
             
             navigationItem.rightBarButtonItem = editButtonItem
         }
         
         
-        //trying to get return key to function same as add button
-        //inputToDo.delegate = self as? UITextFieldDelegate
         
     }
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -104,7 +103,7 @@ extension DetailViewController: UITableViewDelegate {
         
     }
     
-    /*
+    /* need to adapt for core data
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if isEditing && indexPath.row < toDoItems.count {
             return nil
@@ -124,7 +123,7 @@ extension DetailViewController: UITableViewDelegate {
 extension DetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
     
@@ -150,7 +149,7 @@ extension DetailViewController: UITableViewDataSource {
         return true
     }
     
-    //Still need to update editing functions for CoreData
+    //deleting a cell
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if editingStyle == UITableViewCellEditingStyle.delete {
@@ -160,7 +159,7 @@ extension DetailViewController: UITableViewDataSource {
             appDelegate.saveContext()
         }
     }
-    /*
+    /* need to update for core data
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if indexPath.row >= toDoItems.count && isEditing {
             return false

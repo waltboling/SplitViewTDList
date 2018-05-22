@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var inputToDo: UITextField!
     @IBOutlet weak var bannerView: UIImageView!
     
+    
     @IBAction func addButtonWasTapped(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -49,26 +50,39 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        //if we have a selected list - pull that data
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<DetailList>(entityName: DataStructs.detailEntity)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: DataStructs.detailTitle, ascending: true )]
         
+        if let currentList = self.masterList
+        {
+            fetchRequest.predicate = NSPredicate(format: DataStructs.parentTitle + " == %@",
+                currentList.value(forKey: DataStructs.masterTitle) as! CVarArg)
+            print(currentList.value(forKey: DataStructs.masterTitle) as! CVarArg)
+        }
+        else {
+            fetchRequest.predicate = NSPredicate(format: "\(DataStructs.parentTitle) == %@", "")
+        }
         
-        fetchRequest.predicate = NSPredicate(format: "\(DataStructs.parentTitle) == %@", masterList.value(forKey: DataStructs.masterTitle) as! CVarArg)
-            //correlating detail and master lists via "parentTitle" attribute
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: DataStructs.detailCache)
+        //correlating detail and master lists via "parentTitle" attribute
+    
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
         
         do {
             try fetchedResultsController?.performFetch()
+            for i in (fetchedResultsController?.fetchedObjects)!{
+                print("\(i.parentTitle)")
+            }
+            detailTableView.reloadData()
         } catch {
             fatalError("Unable to fetch: \(error)")
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let detailList = self.masterList {
@@ -77,10 +91,8 @@ class DetailViewController: UIViewController {
             
             navigationItem.rightBarButtonItem = editButtonItem
         }
-        
-        
-        
     }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -127,7 +139,8 @@ extension DetailViewController: UITableViewDataSource {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {        guard let sectionInfo = fetchedResultsController?.sections?[section] else {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let sectionInfo = fetchedResultsController?.sections?[section] else {
             fatalError("Failed to load fetched results controller")
         }
         
@@ -175,6 +188,7 @@ extension DetailViewController: UITableViewDataSource {
             toDoItems.insert(itemToMove, at: destinationIndexPath.row)
         }
     }*/
+    
 }
 
 extension DetailViewController: NSFetchedResultsControllerDelegate {

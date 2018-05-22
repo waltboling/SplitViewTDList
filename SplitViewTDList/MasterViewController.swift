@@ -13,6 +13,8 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     
     var masterLists = [NSManagedObject]()
     var fetchedResultsController: NSFetchedResultsController<MasterList>?
+    var detailController: DetailViewController?
+    var currentMasterList: NSManagedObject?
         
     @IBAction func createListWasTapped(_ sender: UIBarButtonItem) {
         let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -50,10 +52,10 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DataStructs.toDetailList {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let masterList = fetchedResultsController?.object(at: indexPath)
+                currentMasterList = (fetchedResultsController?.object(at: indexPath))!
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.masterList = masterList
-                controller.toDoItemsSet = (masterList?.withDetail)!
+                controller.masterList = currentMasterList
+                //controller.toDoItemsSet = (currentMasterList.withde)!
             }
         }
     }
@@ -91,7 +93,8 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         
         return sectionInfo.numberOfObjects
     }
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let fetchedResultsController = fetchedResultsController else {
             fatalError("Failed to load fetched results controller")
@@ -101,6 +104,13 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         masterCell.textLabel?.text = masterList.masterTitle
             return masterCell
     }
+    
+    override func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //need to get newly select master list
+        //need to set that in the detail controller
+        
+    }
+
 }
 
 //NSFetchedResultsControllerDelegate Methods

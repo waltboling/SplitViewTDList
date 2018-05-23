@@ -15,16 +15,7 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     var fetchedResultsController: NSFetchedResultsController<MasterList>?
     var detailController: DetailViewController?
     var currentMasterList: NSManagedObject?
-        
-    @IBAction func createListWasTapped(_ sender: UIBarButtonItem) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: DataStructs.createMasterPopover )
-        viewController.modalPresentationStyle = .popover
-        let popover: UIPopoverPresentationController = viewController.popoverPresentationController!
-        popover.barButtonItem = sender
-        popover.delegate = self
-        present(viewController, animated: true, completion:nil)
-    }
+    private let mainStoryboard = "Main"
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,10 +35,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
             fatalError("Unable to fetch: \(error)")
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DataStructs.toDetailList {
@@ -55,13 +42,22 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
                 currentMasterList = (fetchedResultsController?.object(at: indexPath))!
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.masterList = currentMasterList
-                //controller.toDoItemsSet = (currentMasterList.withde)!
             }
         }
     }
 
-    
     // popover controls
+    @IBAction func createListWasTapped(_ sender: UIBarButtonItem) {
+        let storyboard : UIStoryboard = UIStoryboard(name: mainStoryboard, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: DataStructs.createMasterPopover )
+        viewController.modalPresentationStyle = .popover
+        let popover: UIPopoverPresentationController = viewController.popoverPresentationController!
+        
+        popover.barButtonItem = sender
+        popover.delegate = self
+        present(viewController, animated: true, completion:nil)
+    }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .fullScreen
     }
@@ -71,7 +67,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(MasterViewController.dismissViewController))
         navigationController.topViewController?.navigationItem.rightBarButtonItem = doneButton
         return navigationController
-        
     }
     
     @objc func dismissViewController() {
@@ -94,7 +89,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         return sectionInfo.numberOfObjects
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let fetchedResultsController = fetchedResultsController else {
             fatalError("Failed to load fetched results controller")
@@ -104,13 +98,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         masterCell.textLabel?.text = masterList.masterTitle
             return masterCell
     }
-    
-    override func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //need to get newly select master list
-        //need to set that in the detail controller
-        
-    }
-
 }
 
 //NSFetchedResultsControllerDelegate Methods
@@ -154,5 +141,4 @@ extension MasterViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
 }

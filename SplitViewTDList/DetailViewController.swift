@@ -9,20 +9,26 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
     
     var masterList: NSManagedObject!
-    var toDoItemsSet: NSSet = []
-    var toDoItems = [NSManagedObject]()
-    
     var fetchedResultsController: NSFetchedResultsController<DetailList>?
     
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var inputToDo: UITextField!
     @IBOutlet weak var bannerView: UIImageView!
     
-    
     @IBAction func addButtonWasTapped(_ sender: Any) {
+        detailItemWasEntered()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        inputToDo.resignFirstResponder()
+        detailItemWasEntered()
+        return true
+    }
+    
+    func detailItemWasEntered() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: DataStructs.detailEntity, in: context)
@@ -36,15 +42,6 @@ class DetailViewController: UIViewController {
         appDelegate.saveContext()
         
         inputToDo.text = ""
-    }
-    
-    //trying to get return key to function same as add button
-    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-     textField.resignFirstResponder()
-     return true
-     }*/
-    override func viewWillDisappear(_ animated: Bool) {
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,38 +59,35 @@ class DetailViewController: UIViewController {
         {
             fetchRequest.predicate = NSPredicate(format: DataStructs.parentTitle + " == %@",
                 currentList.value(forKey: DataStructs.masterTitle) as! CVarArg)
-            print(currentList.value(forKey: DataStructs.masterTitle) as! CVarArg)
         }
         else {
             fetchRequest.predicate = NSPredicate(format: "\(DataStructs.parentTitle) == %@", "")
         }
         
         //correlating detail and master lists via "parentTitle" attribute
-    
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
         
         do {
             try fetchedResultsController?.performFetch()
-            for i in (fetchedResultsController?.fetchedObjects)!{
-                print("\(i.parentTitle)")
-            }
-            detailTableView.reloadData()
         } catch {
             fatalError("Unable to fetch: \(error)")
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let detailList = self.masterList {
-            navigationItem.title = detailList.value(forKey: "masterTitle") as? String
+            navigationItem.title = detailList.value(forKey: DataStructs.masterTitle) as? String
             //  need to redo image features of app: old version -> bannerView.image = detailList.bannerImage
+            //navigationItem.rightBarButtonItem = editButtonItem
             
-            navigationItem.rightBarButtonItem = editButtonItem
+            self.inputToDo.delegate = self
         }
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
+    //if edit button re-added
+    /*override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
         if editing {
@@ -101,7 +95,7 @@ class DetailViewController: UIViewController {
         } else {
             detailTableView.setEditing(false, animated: true)
         }
-    }
+    }*/
 }
 
 extension DetailViewController: UITableViewDelegate {
@@ -112,10 +106,9 @@ extension DetailViewController: UITableViewDelegate {
         } else {
             return .delete
         }
-        
     }
     
-    /* need to adapt for core data
+    /* if move function re-added, need to adapt for core data
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if isEditing && indexPath.row < toDoItems.count {
             return nil
@@ -135,7 +128,6 @@ extension DetailViewController: UITableViewDelegate {
 extension DetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
     
@@ -172,7 +164,7 @@ extension DetailViewController: UITableViewDataSource {
             appDelegate.saveContext()
         }
     }
-    /* need to update for core data
+    /* if move re-added, need to update for core data
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if indexPath.row >= toDoItems.count && isEditing {
             return false

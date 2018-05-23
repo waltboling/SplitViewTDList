@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MasterListLaunchPortraitBW" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-bL-Gfl">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MasterListLaunchPortraitBW" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-bL-Gfl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <variation key="heightClass=compact" image="MasterListLaunchLandscapeBW"/>
                             </imageView>
@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MasterListLaunchLandscapeBW" width="3508" height="2481"/>
-        <image name="MasterListLaunchPortraitBW" width="2481" height="4345"/>
+        <image name="MasterListLaunchLandscapeBW" width="1169" height="827"/>
+        <image name="MasterListLaunchPortraitBW" width="827" height="1448"/>
     </resources>
 </document>

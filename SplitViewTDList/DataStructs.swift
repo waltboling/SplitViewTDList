@@ -20,7 +20,7 @@ public struct DataStructs {
     //for detail list
     static let detailEntity = "DetailList"
     static let detailTitle = "detailTitle"
-    static let parentTitle = "parentTitle"  //leah
+    static let parentTitle = "parentTitle"
     static let detailCell = "detailCell"
-    static let detailCache = "Detail Cache"
+    //static let detailCache = "Detail Cache"
 }

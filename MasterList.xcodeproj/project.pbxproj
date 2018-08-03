@@ -14,13 +14,19 @@
 		E66CC09F208830670020CC9F /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66CC09E208830670020CC9F /* MasterViewController.swift */; };
 		E66CC0A1208830C40020CC9F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66CC0A0208830C40020CC9F /* DetailViewController.swift */; };
 		E686EF7C20AFD3F600AE84C1 /* CreateMasterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E686EF7B20AFD3F600AE84C1 /* CreateMasterListVC.swift */; };
-		E697239020AF40A500D38F41 /* SplitViewTDList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E697238E20AF40A500D38F41 /* SplitViewTDList.xcdatamodeld */; };
+		E6A27F2420F52FBF004F09A2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A27F2320F52FBF004F09A2 /* CloudKit.framework */; };
+		E6AE666F210908BD00C93A34 /* NTF-Grand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6AE666D210908BD00C93A34 /* NTF-Grand-Italic.otf */; };
+		E6AE6670210908BD00C93A34 /* NTF-Grand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6AE666E210908BD00C93A34 /* NTF-Grand-Regular.otf */; };
 		E6C6F21A20AF933400A4D772 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C6F21920AF933400A4D772 /* DataStructs.swift */; };
+		E6CE76D9210A3FD200FB04E7 /* Dense-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6CE76D8210A3FC600FB04E7 /* Dense-Regular.otf */; };
+		FE1A604D7525007C756D1D0E /* Pods_MasterList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F02AA9578B3BB87C527A2A /* Pods_MasterList.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SplitViewTDList2.xcdatamodel; sourceTree = "<group>"; };
-		E66CC08920882B940020CC9F /* SplitViewTDList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewTDList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15F02AA9578B3BB87C527A2A /* Pods_MasterList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasterList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		749192FD12D6E7DDA7A1597B /* Pods-MasterList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MasterList/Pods-MasterList.debug.xcconfig"; sourceTree = "<group>"; };
+		8F7424A8982AFA3AF23D95B1 /* Pods-MasterList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MasterList/Pods-MasterList.release.xcconfig"; sourceTree = "<group>"; };
+		E66CC08920882B940020CC9F /* MasterList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66CC08C20882B940020CC9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E66CC09120882B940020CC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E66CC09320882B940020CC9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,9 +34,13 @@
 		E66CC09E208830670020CC9F /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		E66CC0A0208830C40020CC9F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E686EF7B20AFD3F600AE84C1 /* CreateMasterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMasterListVC.swift; sourceTree = "<group>"; };
-		E697238F20AF40A500D38F41 /* Core Data Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Core Data Model.xcdatamodel"; sourceTree = "<group>"; };
+		E6A27F2120F52FBB004F09A2 /* MasterList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MasterList.entitlements; sourceTree = "<group>"; };
+		E6A27F2320F52FBF004F09A2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E6AE666D210908BD00C93A34 /* NTF-Grand-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Italic.otf"; sourceTree = "<group>"; };
+		E6AE666E210908BD00C93A34 /* NTF-Grand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Regular.otf"; sourceTree = "<group>"; };
 		E6C6F21920AF933400A4D772 /* DataStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructs.swift; sourceTree = "<group>"; };
 		E6C6F22120AFB6AA00A4D772 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6CE76D8210A3FC600FB04E7 /* Dense-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dense-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A27F2420F52FBF004F09A2 /* CloudKit.framework in Frameworks */,
+				FE1A604D7525007C756D1D0E /* Pods_MasterList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,54 +59,87 @@
 		E66CC08020882B940020CC9F = {
 			isa = PBXGroup;
 			children = (
-				E66CC08B20882B940020CC9F /* SplitViewTDList */,
+				E66CC08B20882B940020CC9F /* MasterList */,
 				E66CC08A20882B940020CC9F /* Products */,
+				E6A27F2220F52FBF004F09A2 /* Frameworks */,
+				FC415606CB8C9A65273EAA9D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		E66CC08A20882B940020CC9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E66CC08920882B940020CC9F /* SplitViewTDList.app */,
+				E66CC08920882B940020CC9F /* MasterList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E66CC08B20882B940020CC9F /* SplitViewTDList */ = {
+		E66CC08B20882B940020CC9F /* MasterList */ = {
 			isa = PBXGroup;
 			children = (
+				E6A27F2120F52FBB004F09A2 /* MasterList.entitlements */,
 				E66CC08C20882B940020CC9F /* AppDelegate.swift */,
+				E6AE666A2109087600C93A34 /* Resources */,
 				E66CC09020882B940020CC9F /* Main.storyboard */,
 				E686EF7B20AFD3F600AE84C1 /* CreateMasterListVC.swift */,
 				E6C6F21920AF933400A4D772 /* DataStructs.swift */,
 				E66CC09E208830670020CC9F /* MasterViewController.swift */,
 				E66CC0A0208830C40020CC9F /* DetailViewController.swift */,
-				E697238E20AF40A500D38F41 /* SplitViewTDList.xcdatamodeld */,
 				E66CC09320882B940020CC9F /* Assets.xcassets */,
 				E66CC09520882B940020CC9F /* LaunchScreen.storyboard */,
 				E6C6F22120AFB6AA00A4D772 /* Info.plist */,
 			);
-			path = SplitViewTDList;
+			path = MasterList;
+			sourceTree = "<group>";
+		};
+		E6A27F2220F52FBF004F09A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6A27F2320F52FBF004F09A2 /* CloudKit.framework */,
+				15F02AA9578B3BB87C527A2A /* Pods_MasterList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6AE666A2109087600C93A34 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E6AE666D210908BD00C93A34 /* NTF-Grand-Italic.otf */,
+				E6AE666E210908BD00C93A34 /* NTF-Grand-Regular.otf */,
+				E6CE76D8210A3FC600FB04E7 /* Dense-Regular.otf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FC415606CB8C9A65273EAA9D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				749192FD12D6E7DDA7A1597B /* Pods-MasterList.debug.xcconfig */,
+				8F7424A8982AFA3AF23D95B1 /* Pods-MasterList.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E66CC08820882B940020CC9F /* SplitViewTDList */ = {
+		E66CC08820882B940020CC9F /* MasterList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E66CC09B20882B940020CC9F /* Build configuration list for PBXNativeTarget "SplitViewTDList" */;
+			buildConfigurationList = E66CC09B20882B940020CC9F /* Build configuration list for PBXNativeTarget "MasterList" */;
 			buildPhases = (
+				66F986B51E42C5E87F3A8CE2 /* [CP] Check Pods Manifest.lock */,
 				E66CC08520882B940020CC9F /* Sources */,
 				E66CC08620882B940020CC9F /* Frameworks */,
 				E66CC08720882B940020CC9F /* Resources */,
+				05F0F49F902AC1A1A8EC850E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SplitViewTDList;
+			name = MasterList;
 			productName = SplitViewTask;
-			productReference = E66CC08920882B940020CC9F /* SplitViewTDList.app */;
+			productReference = E66CC08920882B940020CC9F /* MasterList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,10 +155,18 @@
 					E66CC08820882B940020CC9F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = E66CC08420882B940020CC9F /* Build configuration list for PBXProject "SplitViewTDList" */;
+			buildConfigurationList = E66CC08420882B940020CC9F /* Build configuration list for PBXProject "MasterList" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +179,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E66CC08820882B940020CC9F /* SplitViewTDList */,
+				E66CC08820882B940020CC9F /* MasterList */,
 			);
 		};
 /* End PBXProject section */
@@ -138,11 +191,53 @@
 			files = (
 				E66CC09720882B940020CC9F /* LaunchScreen.storyboard in Resources */,
 				E66CC09420882B940020CC9F /* Assets.xcassets in Resources */,
+				E6CE76D9210A3FD200FB04E7 /* Dense-Regular.otf in Resources */,
+				E6AE6670210908BD00C93A34 /* NTF-Grand-Regular.otf in Resources */,
 				E66CC09220882B940020CC9F /* Main.storyboard in Resources */,
+				E6AE666F210908BD00C93A34 /* NTF-Grand-Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05F0F49F902AC1A1A8EC850E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MasterList/Pods-MasterList-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MasterList/Pods-MasterList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66F986B51E42C5E87F3A8CE2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MasterList-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E66CC08520882B940020CC9F /* Sources */ = {
@@ -151,7 +246,6 @@
 			files = (
 				E686EF7C20AFD3F600AE84C1 /* CreateMasterListVC.swift in Sources */,
 				E66CC0A1208830C40020CC9F /* DetailViewController.swift in Sources */,
-				E697239020AF40A500D38F41 /* SplitViewTDList.xcdatamodeld in Sources */,
 				E66CC09F208830670020CC9F /* MasterViewController.swift in Sources */,
 				E66CC08D20882B940020CC9F /* AppDelegate.swift in Sources */,
 				E6C6F21A20AF933400A4D772 /* DataStructs.swift in Sources */,
@@ -293,13 +387,15 @@
 		};
 		E66CC09C20882B940020CC9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 749192FD12D6E7DDA7A1597B /* Pods-MasterList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MasterList/MasterList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q24H7SU84Q;
-				INFOPLIST_FILE = "$(SRCROOT)/SplitViewTDList/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MasterList/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = waltboling.SplitViewTask;
+				PRODUCT_BUNDLE_IDENTIFIER = waltboling.MasterList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -308,13 +404,15 @@
 		};
 		E66CC09D20882B940020CC9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F7424A8982AFA3AF23D95B1 /* Pods-MasterList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MasterList/MasterList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q24H7SU84Q;
-				INFOPLIST_FILE = "$(SRCROOT)/SplitViewTDList/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MasterList/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = waltboling.SplitViewTask;
+				PRODUCT_BUNDLE_IDENTIFIER = waltboling.MasterList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -324,7 +422,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E66CC08420882B940020CC9F /* Build configuration list for PBXProject "SplitViewTDList" */ = {
+		E66CC08420882B940020CC9F /* Build configuration list for PBXProject "MasterList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E66CC09920882B940020CC9F /* Debug */,
@@ -333,7 +431,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E66CC09B20882B940020CC9F /* Build configuration list for PBXNativeTarget "SplitViewTDList" */ = {
+		E66CC09B20882B940020CC9F /* Build configuration list for PBXNativeTarget "MasterList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E66CC09C20882B940020CC9F /* Debug */,
@@ -343,20 +441,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E697238E20AF40A500D38F41 /* SplitViewTDList.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */,
-				E697238F20AF40A500D38F41 /* Core Data Model.xcdatamodel */,
-			);
-			currentVersion = E638894920B2818500845B8E /* SplitViewTDList2.xcdatamodel */;
-			path = SplitViewTDList.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E66CC08120882B940020CC9F /* Project object */;
 }
